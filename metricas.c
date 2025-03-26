@@ -254,21 +254,9 @@ char* promedio_pizzas_por_dia(int *size, struct order *orders) {
     snprintf(result, sizeof(result), "Promedio de pizzas por día: %.2f", average);
     return result;
 }
-// Funcion para contar la cantidad de ingredientes totales entre todas las ordenes 
-char* ingrediente_mas_vendido(int *size, struct order *orders) {
-    static char result[100];
 
-    
-    struct ingredient_count {
-        char ingredient[200];
-        int total_count;
-    };
 
-    struct ingredient_count ingredients[100];
-    int ingredient_count_size = 0;
-
-  
-    void trim_spaces_and_quotes(char *str) {
+void trim_spaces_and_quotes(char *str) {
         int start = 0;
         int end = strlen(str) - 1;
 
@@ -294,6 +282,21 @@ char* ingrediente_mas_vendido(int *size, struct order *orders) {
         memmove(str, str + start, end - start + 1);
         str[end - start + 1] = '\0';  
     }
+// Funcion para contar la cantidad de ingredientes totales entre todas las ordenes 
+char* ingrediente_mas_vendido(int *size, struct order *orders) {
+    static char result[100];
+
+    
+    struct ingredient_count {
+        char ingredient[200];
+        int total_count;
+    };
+
+    struct ingredient_count ingredients[100];
+    int ingredient_count_size = 0;
+
+  
+    
 
    
     for (int i = 0; i < *size; i++) {
